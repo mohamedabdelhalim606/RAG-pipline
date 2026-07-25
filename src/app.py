@@ -14,18 +14,41 @@ st.set_page_config(
 
 st.sidebar.title("⚙️ Settings")
 
+
+default_key = ""
+default_model = "openai/gpt-4o-mini" 
+
+try:
+    default_key = st.secrets.get("OPENROUTER_API_KEY", "")
+    default_model = st.secrets.get("OPENROUTER_MODEL", "openai/gpt-4o-mini")
+except Exception:
+    pass
+
+
 api_key = st.sidebar.text_input(
     "OpenRouter API Key",
+    value=default_key,
     type="password"
 )
 
+
+models_list = [
+    "openai/gpt-4o-mini",
+    "meta-llama/llama-3.3-70b-instruct",
+    "google/gemma-3-27b-it"
+]
+
+
+try:
+    model_index = models_list.index(default_model)
+except ValueError:
+    model_index = 0  # العودة للموديل الأول في حالة عدم التطابق
+
+
 model = st.sidebar.selectbox(
     "Model",
-    [
-        "openai/gpt-4o-mini",
-        "meta-llama/llama-3.3-70b-instruct",
-        "google/gemma-3-27b-it"
-    ]
+    models_list,
+    index=model_index
 )
 
 # ==========================================================
