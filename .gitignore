@@ -3,11 +3,9 @@ __pycache__/
 *.pyc
 
 # Database and heavy files
-Data/chroma_db/
 Data/vector_db/
 Data/embeddings/
 *.pkl
-*.sqlite3
 
 # Environment variables
 .env
