@@ -1,6 +1,14 @@
+import sys
+from pathlib import Path
 import streamlit as st
 
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.append(str(PROJECT_ROOT))
+
+
 from src.prompting import get_llm_response
+
 
 st.set_page_config(
     page_title="RAG Question Answering System",
