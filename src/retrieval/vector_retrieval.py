@@ -21,7 +21,7 @@ print("\nEmbedding Model Loaded")
 # ==========================================================
 
 client = chromadb.PersistentClient(path=str(CHROMA_PATH))
-collection = client.get_collection("rag_collection")
+collection = client.get_or_create_collection("rag_collection")
 print("Connected To ChromaDB")
 
 # ==========================================================
