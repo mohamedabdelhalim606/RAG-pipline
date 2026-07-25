@@ -1,5 +1,5 @@
 streamlit
 openai
-chromadb
+chromadb==1.5.9
 sentence-transformers
 rank_bm25
